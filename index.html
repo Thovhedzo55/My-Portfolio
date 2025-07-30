@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thovhedzo Mphitshana - Chemical Engineering Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === Global Styles === */
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --bg: #ffffff;
+            --card-bg: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --accent: #e74c3c;
+            --success: #2ecc71;
+            --warning: #f39c12;
+        }
+
+        .dark-mode {
+            --primary: #3498db;
+            --secondary: #1e272e;
+            --light: #2d3436;
+            --dark: #f5f6fa;
+            --text: #f5f6fa;
+            --bg: #1e272e;
+            --card-bg: #2d3436;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #d35400;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* === Header & Navigation === */
+        header {
+            background: var(--secondary);
+            color: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+
+        /* === Hero Section === */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center/cover;
+            color: white;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.1rem;
+            margin: 10px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--secondary);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* === About Section === */
+        #about {
+            background: var(--bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--text);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .personal-info {
+            margin-top: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .info-item span:first-child {
+            font-weight: 600;
+            width: 120px;
+            color: var(--primary);
+        }
+
+        /* === Academic Journey Section === */
+        #academic-journey {
+            background: var(--light);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        .year-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            margin-bottom: 50px;
+        }
+
+        .year-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: var(--bg);
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid var(--card-bg);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--card-bg);
+        }
+
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid var(--card-bg);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--card-bg) transparent transparent;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        .year-content {
+            padding: 30px;
+            background-color: var(--card-bg);
+            position: relative;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .year-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .courses-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .course-item {
+            background: var(--bg);
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .course-item h4 {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .assignment {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+        }
+
+        .grade {
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .grade-A {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .grade-B {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .grade-C {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        /* === Skills Section === */
+        #skills {
+            background: var(--bg);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .skill {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .skill:hover {
+            transform: translateY(-10px);
+        }
+
+        .skill i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+        }
+
+        .skill h3 {
+            margin-bottom: 20px;
+            color: var(--text);
+            font-size: 1.5rem;
+        }
+
+        .skill p {
+            margin-bottom: 20px;
+            color: var(--text);
+            font-size: 1.1rem;
+        }
+
+        .skill-bar {
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            margin-top: 25px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 6px;
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* === Projects Section === */
+        #projects {
+            background: var(--light);
+        }
+
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--light);
+            color: var(--text);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-info h3 {
+            margin-bottom: 15px;
+            color: var(--text);
+            font-size: 1.5rem;
+        }
+
+        .project-info p {
+            margin-bottom: 20px;
+            color: var(--text);
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .project-tag {
+            background: var(--light);
+            color: var(--text);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* === Certifications Section === */
+        #certifications {
+            background: var(--bg);
+        }
+
+        .certifications-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .certification-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .certification-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .certification-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .certification-info {
+            padding: 25px;
+        }
+
+        .certification-info h3 {
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .certification-info p {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .certification-date {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* === Documents Section === */
+        #documents {
+            background: var(--light);
+        }
+
+        .documents-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .document-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .document-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .document-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .document-card h3 {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .document-card p {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        /* === Contact Section === */
+        #contact {
+            background: var(--bg);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--text);
+        }
+
+        .contact-details {
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 20px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            transition: transform 0.3s, background 0.3s;
+            font-size: 1.3rem;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: var(--secondary);
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .form-group textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .error {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-top: 8px;
+            display: none;
+        }
+
+        /* === Footer === */
+        footer {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            opacity: 0.8;
+        }
+
+        /* === Back to Top Button === */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        /* === Modal === */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--bg);
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 900px;
+            position: relative;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .modal-body {
+            margin-top: 30px;
+        }
+
+        /* === Responsive Design === */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 40px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .year-container {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .year-container::before {
+                left: 60px;
+                border: medium solid var(--card-bg);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--card-bg) transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 15px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .courses-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .project-filters {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                width: 100%;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Thovhedzo<span>Mphitshana</span></div>
+                <div class="nav-links">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#academic-journey">Academic Journey</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#certifications">Certifications</a>
+                    <a href="#documents">Documents</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Thovhedzo Ephraime Mphitshana</h1>
+                <p>Chemical Engineering Student at University of the Witwatersrand | Class of 2025</p>
+                <div>
+                    <a href="#academic-journey" class="btn">View Academic Journey</a>
+                    <a href="#documents" class="btn btn-outline">Download Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Get to know more about who I am and my academic pursuits</p>
+            </div>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="images/Apr 11, 2025, 06_51_52 PM.png" >
+                </div>
+                <div class="about-text">
+                    <h3>Who Am I?</h3>
+                    <p>I am a dedicated second-year Chemical Engineering student at the University of the Witwatersrand (Wits) with a passion for process engineering, sustainable energy solutions, and innovative chemical processes. My academic journey has been marked by consistent excellence and a drive to apply theoretical knowledge to practical challenges.</p>
+                    <p>Born and raised in South Africa, I developed an early interest in science and technology, which led me to pursue engineering. My goal is to contribute to sustainable industrial processes and energy solutions that benefit both industry and the environment.</p>
+                    <p>Beyond academics, I am actively involved in engineering societies, participate in research projects, and mentor first-year students. I believe in the power of collaboration and continuous learning to drive innovation in the chemical engineering field.</p>
+                    
+                    <div class="personal-info">
+                        <div class="info-item">
+                            <span>Name:</span>
+                            <span>Thovhedzo Ephraime Mphitshana</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Email:</span>
+                            <span>thovhedzoephraime@gmail.com</span>
+                        </div>
+                        <div class="info-item">
+                            <span>University:</span>
+                            <span>University of the Witwatersrand</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Degree:</span>
+                            <span>BSc in Chemical Engineering</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Year:</span>
+                            <span>Second Year (Class of 2025)</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Transcript:</span>
+                            <span>Available upon request</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Journey Section -->
+    <section id="academic-journey">
+        <div class="container">
+            <div class="section-title">
+                <h2>Academic Journey</h2>
+                <p>My path through chemical engineering education at Wits University</p>
+            </div>
+            
+            <div class="timeline">
+                <!-- First Year -->
+                <div class="year-container left">
+                    <div class="year-content">
+                        <h3>First Year (2022)</h3>
+                        <p>My foundational year introduced me to core engineering principles and basic chemical engineering concepts. I achieved a distinction average while adapting to university life.</p>
+                        
+                        <div class="courses-list">
+                            <div class="course-item">
+                                <h4>Engineering Chemistry</h4>
+                                <div class="assignment">
+                                    <span>Final Project</span>
+                                    <span class="grade grade-A">A</span>
+                                </div>
+                                <div class="assignment">
+                                    <span>Lab Reports</span>
+                                    <span class="grade grade-B">B+</span>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Calculus for Engineers</h4>
+                                <div class="assignment">
+                                    <span>Midterm Exam</span>
+                                    <span class="grade grade-A">A</span>
+                                </div>
+                                <div class="assignment">
+                                    <span>Final Exam</span>
+                                    <span class="grade grade-A">A-</span>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Physics for Engineers</h4>
+                                <div class="assignment">
+                                    <span>Practical Work</span>
+                                    <span class="grade grade-B">B</span>
+                                </div>
+                                <div class="assignment">
+                                    <span>Theory Exam</span>
+                                    <span class="grade grade-B">B+</span>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Engineering Drawing</h4>
+                                <div class="assignment">
+                                    <span>CAD Project</span>
+                                    <span class="grade grade-A">A</span>
+                                </div>
+                                <div class="assignment">
+                                    <span>Manual Drafting</span>
+                                    <span class="grade grade-B">B</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Second Year -->
+                <div class="year-container right">
+                    <div class="year-content">
+                        <h3>Second Year (2023)</h3>
+                        <p>Currently deepening my knowledge in chemical engineering fundamentals, with a focus on thermodynamics, fluid mechanics, and process calculations.</p>
+                        
+                        <div class="courses-list">
+                            <div class="course-item">
+                                <h4>Chemical Engineering Thermodynamics</h4>
+                                <div class="assignment">
+                                    <span>Phase Equilibrium Project</span>
+                                    <span class="grade grade-A">A</span>
+                                </div>
+                                <div class="assignment">
+                                    <span>Midterm Test</span>
+                                    <span class="grade grade-B">B+</span>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Fluid Mechanics</h4>
+                                <div class="assignment">
+                                    <span>Pump System Design</span>
+                                    <span class="grade grade-A">A-</span>
+                                </div>
+                                <div class="assignment">
+                                    <span>Lab Reports</span>
+                                    <span class="grade grade-A">A</span>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Process Calculations</h4>
+                                <div class="assignment">
+                                    <span>Mass Balance Project</span>
+                                    <span class="grade grade-A">A</span>
+                                </div>
+                                <div class="assignment">
+                                    <span>Energy Balance Test</span>
+                                    <span class="grade grade-B">B+</span>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <h4>Organic Chemistry</h4>
+                                <div class="assignment">
+                                    <span>Synthesis Project</span>
+                                    <span class="grade grade-B">B</span>
+                                </div>
+                                <div class="assignment">
+                                    <span>Mechanism Analysis</span>
+                                    <span class="grade grade-B">B+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Third Year (Placeholder) -->
+                <div class="year-container left">
+                    <div class="year-content">
+                        <h3>Third Year (2024)</h3>
+                        <p>Future studies will focus on advanced chemical engineering topics including process design, reaction engineering, and separation processes.</p>
+                        <p><em>Coursework to be completed</em></p>
+                    </div>
+                </div>
+                
+                <!-- Fourth Year (Placeholder) -->
+                <div class="year-container right">
+                    <div class="year-content">
+                        <h3>Fourth Year (2025)</h3>
+                        <p>Final year will culminate in a comprehensive design project and specialization in chosen chemical engineering electives.</p>
+                        <p><em>Coursework to be completed</em></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Skills</h2>
+                <p>The competencies I've developed through my chemical engineering studies</p>
+            </div>
+            <div class="skills-container">
+                <div class="skill">
+                    <i class="fas fa-flask"></i>
+                    <h3>Laboratory Techniques</h3>
+                    <p>Proficient in standard chemical laboratory procedures, safety protocols, and analytical instrumentation.</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="90%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Process Calculations</h3>
+                    <p>Skilled in mass and energy balance calculations for chemical processes and systems.</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="85%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-fire"></i>
+                    <h3>Thermodynamics</h3>
+                    <p>Understanding of chemical thermodynamics principles and their application to engineering systems.</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="80%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-water"></i>
+                    <h3>Fluid Mechanics</h3>
+                    <p>Knowledge of fluid flow behavior and its application in chemical process equipment.</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="75%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-atom"></i>
+                    <h3>Chemical Reaction Engineering</h3>
+                    <p>Fundamentals of reaction kinetics and reactor design for chemical processes.</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="70%"></div>
+                    </div>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Engineering Software</h3>
+                    <p>Experience with Aspen Plus, MATLAB, COMSOL, and CAD tools for engineering applications.</p>
+                    <div class="skill-bar">
+                        <div class="skill-progress" data-width="65%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Academic Projects</h2>
+                <p>Notable assignments and projects from my chemical engineering coursework</p>
+            </div>
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="first-year">First Year</button>
+                <button class="filter-btn" data-filter="second-year">Second Year</button>
+                <button class="filter-btn" data-filter="research">Research</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="second-year">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1581092921461-39b2f2a8a3b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Distillation Column Design">
+                    </div>
+                    <div class="project-info">
+                        <h3>Distillation Column Design</h3>
+                        <p>Designed a binary distillation column for separating ethanol-water mixture, including tray calculations, energy requirements, and equipment specifications.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Thermodynamics</span>
+                            <span class="project-tag">Process Design</span>
+                            <span class="project-tag">ASPEN</span>
+                        </div>
+                        <a href="#" class="btn" onclick="openModal('distillation-modal')">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="first-year">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Chemical Plant Safety Analysis">
+                    </div>
+                    <div class="project-info">
+                        <h3>Chemical Plant Safety Analysis</h3>
+                        <p>Conducted a HAZOP study on a hypothetical ammonia production plant, identifying potential hazards and recommending safety measures.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Safety</span>
+                            <span class="project-tag">HAZOP</span>
+                            <span class="project-tag">Risk Assessment</span>
+                        </div>
+                        <a href="#" class="btn" onclick="openModal('safety-modal')">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="second-year">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Heat Exchanger Optimization">
+                    </div>
+                    <div class="project-info">
+                        <h3>Heat Exchanger Optimization</h3>
+                        <p>Analyzed and optimized a shell-and-tube heat exchanger system for maximum efficiency using MATLAB simulations.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Heat Transfer</span>
+                            <span class="project-tag">MATLAB</span>
+                            <span class="project-tag">Optimization</span>
+                        </div>
+                        <a href="#" class="btn" onclick="openModal('heat-exchanger-modal')">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card" data-category="research">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Biodiesel Production Research">
+                    </div>
+                    <div class="project-info">
+                        <h3>Biodiesel Production Research</h3>
+                        <p>Investigating catalyst efficiency in transesterification reactions for sustainable biodiesel production (Ongoing undergraduate research).</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Renewable Energy</span>
+                            <span class="project-tag">Catalysis</span>
+                            <span class="project-tag">Research</span>
+                        </div>
+                        <a href="#" class="btn" onclick="openModal('biodiesel-modal')">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <div class="section-title">
+                <h2>Certifications & Honors</h2>
+                <p>Academic recognitions and professional certifications I've earned</p>
+            </div>
+            <div class="certifications-container">
+                <div class="certification-card">
+                    <div class="certification-img">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dean's List Certificate">
+                    </div>
+                    <div class="certification-info">
+                        <h3>Dean's List Recognition</h3>
+                        <p class="certification-date">2022, 2023</p>
+                        <p>Awarded for academic excellence in the Faculty of Engineering at Wits University, placing in the top 10% of my class.</p>
+                        <a href="#" class="btn" onclick="openModal('deans-list-modal')">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-img">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Engineering Workshop Certificate">
+                    </div>
+                    <div class="certification-info">
+                        <h3>Engineering Workshop Certification</h3>
+                        <p class="certification-date">2022</p>
+                        <p>Completed intensive training in engineering workshop safety, machining, and fabrication techniques.</p>
+                        <a href="#" class="btn" onclick="openModal('workshop-modal')">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-img">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Chemical Safety Certification">
+                    </div>
+                    <div class="certification-info">
+                        <h3>Chemical Safety Officer</h3>
+                        <p class="certification-date">2023</p>
+                        <p>Certified by the South African Institute of Chemical Engineers for laboratory and industrial chemical safety management.</p>
+                        <a href="#" class="btn" onclick="openModal('safety-cert-modal')">View Certificate</a>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="certification-img">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="MATLAB Certification">
+                    </div>
+                    <div class="certification-info">
+                        <h3>MATLAB for Engineers</h3>
+                        <p class="certification-date">2023</p>
+                        <p>MathWorks certification for engineering computations, data analysis, and process simulations using MATLAB.</p>
+                        <a href="#" class="btn" onclick="openModal('matlab-modal')">View Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="documents">
+        <div class="container">
+            <div class="section-title">
+                <h2>Professional Documents</h2>
+                <p>Download my resume, cover letter, and academic documents</p>
+            </div>
+            <div class="documents-container">
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Curriculum Vitae</h3>
+                    <p>My comprehensive CV detailing academic achievements, skills, and relevant experience.</p>
+                    <a href="#" class="btn" download="Thovhedzo_Mphitshana_CV.pdf">Download CV</a>
+                </div>
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Cover Letter</h3>
+                    <p>Professional cover letter template tailored for engineering internships and opportunities.</p>
+                    <a href="#" class="btn" download="Thovhedzo_Mphitshana_Cover_Letter.pdf">Download Cover Letter</a>
+                </div>
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Academic Transcript</h3>
+                    <p>Official transcript available upon request. Please contact me for access.</p>
+                    <a href="#contact" class="btn">Request Transcript</a>
+                </div>
+                <div class="document-card">
+                    <div class="document-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Project Portfolio</h3>
+                    <p>Detailed documentation of my academic projects and research work.</p>
+                    <a href="#" class="btn" download="Thovhedzo_Mphitshana_Project_Portfolio.pdf">Download Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Feel free to reach out for academic collaborations, research opportunities, or professional inquiries</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>University of the Witwatersrand, Johannesburg, South Africa</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>thovhedzoephraime@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+27 XX XXX XXXX</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-university"></i>
+                            <span>Student Number: [Your Student ID]</span>
+                        </div>
+                    </div>
+                    <h3>Academic Profiles</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fas fa-graduation-cap"></i></a>
+                        <a href="#"><i class="fab fa-researchgate"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-orcid"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                            <div class="error" id="nameError">Please enter your name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="error" id="emailError">Please enter a valid email</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" required>
+                            <div class="error" id="subjectError">Please enter a subject</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                            <div class="error" id="messageError">Please enter your message</div>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Thovhedzo<span>Mphitshana</span></div>
+                <p>Chemical Engineering Student | University of the Witwatersrand</p>
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#academic-journey">Academic Journey</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="copyright">
+                    <p>&copy; <span id="year"></span> Thovhedzo Ephraime Mphitshana. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Project Modals -->
+    <div id="distillation-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Distillation Column Design Project</h2>
+            <div class="modal-body">
+                <h3>Project Overview</h3>
+                <p>This comprehensive design project involved creating a complete distillation system for separating a 40% ethanol/60% water mixture into 95% pure ethanol and 99% pure water streams. The project spanned 8 weeks as part of my second-year Process Calculations course.</p>
+                
+                <h3>Key Components</h3>
+                <ul>
+                    <li>Determined optimal feed stage location using McCabe-Thiele method</li>
+                    <li>Calculated minimum reflux ratio (Rmin = 1.2) and operating reflux ratio (R = 1.5 × Rmin)</li>
+                    <li>Designed a 20-tray sieve plate column with 0.5m diameter</li>
+                    <li>Specified a thermosiphon reboiler and partial condenser system</li>
+                    <li>Performed energy balance calculations for heating/cooling requirements</li>
+                    <li>Simulated the process using ASPEN Plus for validation</li>
+                </ul>
+                
+                <h3>Outcomes</h3>
+                <p>The final design achieved 98.5% ethanol recovery with an energy efficiency of 82% compared to theoretical minimum. Received an A grade and was selected by faculty as an exemplary student project.</p>
+                
+                <h3>Skills Demonstrated</h3>
+                <div class="project-tags">
+                    <span class="project-tag">Process Design</span>
+                    <span class="project-tag">ASPEN Simulation</span>
+                    <span class="project-tag">Thermodynamics</span>
+                    <span class="project-tag">Equipment Sizing</span>
+                </div>
+                
+                <a href="#" class="btn" download="Distillation_Column_Design_Report.pdf">Download Full Report</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="safety-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Chemical Plant Safety Analysis</h2>
+            <div class="modal-body">
+                <h3>Project Overview</h3>
+                <p>A comprehensive hazard and operability (HAZOP) study conducted on a simulated ammonia production plant during my first-year Introduction to Chemical Engineering course. This project introduced me to process safety fundamentals.</p>
+                
+                <h3>Methodology</h3>
+                <ul>
+                    <li>Identified 8 key nodes in the ammonia synthesis loop</li>
+                    <li>Applied HAZOP methodology with 7 guide words (No, More, Less, etc.)</li>
+                    <li>Identified 23 potential hazards including high-pressure risks and toxic releases</li>
+                    <li>Recommended 15 safety measures including pressure relief systems and gas detectors</li>
+                    <li>Developed an emergency response protocol for ammonia leaks</li>
+                </ul>
+                
+                <h3>Outcomes</h3>
+                <p>The final report was praised for its thoroughness and practical recommendations. The project received a B+ and sparked my ongoing interest in process safety engineering.</p>
+                
+                <h3>Skills Demonstrated</h3>
+                <div class="project-tags">
+                    <span class="project-tag">HAZOP</span>
+                    <span class="project-tag">Risk Assessment</span>
+                    <span class="project-tag">Process Safety</span>
+                    <span class="project-tag">Technical Writing</span>
+                </div>
+                
+                <a href="#" class="btn" download="Chemical_Plant_Safety_Analysis.pdf">Download Full Report</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved user preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Animate Skill Bars on Scroll
+        const skillBars = document.querySelectorAll('.skill-progress');
+
+        function animateSkillBars() {
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                if (isElementInViewport(bar)) {
+                    bar.style.width = width;
+                }
+            });
+        }
+
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        window.addEventListener('scroll', animateSkillBars);
+        window.addEventListener('load', animateSkillBars);
+
+        // Project Filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form Validation
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Validate Name
+            const name = document.getElementById('name');
+            const nameError = document.getElementById('nameError');
+            if (name.value.trim() === '') {
+                nameError.style.display = 'block';
+                isValid = false;
+            } else {
+                nameError.style.display = 'none';
+            }
+            
+            // Validate Email
+            const email = document.getElementById('email');
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+            
+            // Validate Subject
+            const subject = document.getElementById('subject');
+            const subjectError = document.getElementById('subjectError');
+            if (subject.value.trim() === '') {
+                subjectError.style.display = 'block';
+                isValid = false;
+            } else {
+                subjectError.style.display = 'none';
+            }
+            
+            // Validate Message
+            const message = document.getElementById('message');
+            const messageError = document.getElementById('messageError');
+            if (message.value.trim() === '') {
+                messageError.style.display = 'block';
+                isValid = false;
+            } else {
+                messageError.style.display = 'none';
+            }
+            
+            // If form is valid, show success message
+            if (isValid) {
+                alert('Thank you for your message, Thovhedzo will get back to you soon!');
+                contactForm.reset();
+            }
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking outside content
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                closeModal();
+            }
+        });
+
+        // Download buttons functionality (simulated)
+        document.querySelectorAll('[download]').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('In a live environment, this would download the file: ' + this.getAttribute('download'));
+            });
+        });
+    </script>
+</body>
+</html>
